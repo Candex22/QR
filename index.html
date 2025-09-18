@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>🧡 Generador de Código QR</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Librería de QR por CDN -->
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>🧡 Generador de Código QR</h1>
+        <p class="subtitle">
+            Ingresá un link para tu proyecto y generá el QR para compartirlo en la Expo Técnica.<br>
+        </p>
+
+        <div class="form-group">
+            <label for="link">📎 Link del Proyecto</label>
+            <input 
+                type="text" 
+                id="link" 
+                placeholder="Pegá acá tu link (GitHub, Netlify, Vercel, PDF, etc.)"
+                autocomplete="url"
+            >
+        </div>
+
+        <div class="controls-row">
+            <div class="form-group">
+                <label for="color">🎨 Color del QR</label>
+                <select id="color">
+                    <option value="#000000">🖤 Negro (clásico)</option>
+                    <option value="#e65100" selected>🧡 Naranja (tema)</option>
+                    <option value="#ff5722">🟠 Naranja Intenso</option>
+                    <option value="#2e7d32">💚 Verde</option>
+                    <option value="#1565c0">💙 Azul</option>
+                    <option value="#c62828">❤️ Rojo</option>
+                    <option value="#6a1b9a">💜 Púrpura</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="size">📏 Tamaño</label>
+                <select id="size">
+                    <option value="128">128px (Pequeño)</option>
+                    <option value="192">192px (Mediano)</option>
+                    <option value="256" selected>256px (Grande)</option>
+                    <option value="320">320px (Extra Grande)</option>
+                    <option value="400">400px (Máximo)</option>
+                </select>
+            </div>
+        </div>
+
+        <button onclick="generateQR()" id="generateBtn">
+            🔄 Generar Código QR
+        </button>
+
+        <div class="loading" id="loading">
+            ⏳ Generando tu código QR...
+        </div>
+
+        <div class="success-message" id="successMessage">
+            ✅ ¡Código QR generado exitosamente!
+        </div>
+
+        <div class="error-message" id="errorMessage">
+            ❌ Error: Por favor, ingresá una URL válida
+        </div>
+
+        <div id="qrcode">
+            <div class="placeholder-text">
+                📱 Tu código QR aparecerá aquí
+            </div>
+        </div>
+
+        <button onclick="downloadQR()" class="download-btn" id="downloadBtn">
+            📥 Descargar QR como Imagen
+        </button>
+    </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
